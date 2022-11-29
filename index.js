@@ -3,7 +3,7 @@ const express = require("express");
 const dataRouter = require("./routes/index");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-
+const cors = require("cors");
 //Configuration
 dotenv.config();
 const port = process.env.PORT || 3000;
@@ -18,6 +18,7 @@ mongoose
 const server = express();
 
 //Server middleware
+server.use(cors());
 server.use(express.json());
 server.use("/form", dataRouter);
 
